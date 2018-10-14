@@ -1,0 +1,20 @@
+[
+  {
+    "card_number": "4234565812146633",
+    "card_holder_name": "John Petter",
+    "card_validity": "02-24",
+    "card_company": "Some New Bank"
+  },
+  {
+    "card_number": "4234565331146633",
+    "card_holder_name": "Jill",
+    "card_validity": "06-22",
+    "card_company": "Some Another Bank"
+  },
+  {
+    "card_number": "45545995331146630",
+    "card_holder_name": "Petter",
+    "card_validity": "06-20",
+    "card_company": "Some Old Bank"
+  }
+]

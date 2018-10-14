@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <link rel="stylesheet" href="css/task1.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Fast Food App Login</title>
+
+</head>
+
+<body id="bg-img">
+    <div class="header">
+        <img src="img/logo.png" alt="">
+    </div>
+
+    <div class="row login">
+        <div class="col s12 l4 offset-l4">
+            <div class="card">
+                <div class="card-action #ff3d00 red darken-2 white-text">
+                    <h3 class="center-align">Login</h3>
+                </div>
+                <form id="somelink">
+                    <div class="card-content">
+                        <div class="form-field">
+                            <label for="email">Email <span id="email_error_message"></span></label>
+                            <input type="text" id="email" class="white-text" required>
+                        </div>
+                        <br>
+                        <div class="form-field">
+                            <label for="password">Password <span id="password_error_message"></span></label>
+                            <input type="password" id="password" class="white-text" required>
+                        </div>
+                        <br>
+                        <div class="form-field">
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Remember me</span>
+                            </label>
+                        </div>
+                        <br>
+                        <div class="form-field center-align">
+                            <button type="button" class="btn-large red darken-2" onclick="correctCred()">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script> src = "js/task1.js"</script>
+    <script>
+        function correctCred() {
+            var input_email = document.getElementById("email");
+            var input_password = document.getElementById("password");
+            if (input_email.value == "test@test.com" && input_password.value == "admin") {
+                window.location =
+                    "creditcard.html";
+            }
+        }
+        $(function () {
+            $("#email_error_message").hide();
+            $("#password_error_message").hide();
+
+            var error_email = false;
+            var error_password = false;
+
+            $("#email").focusout(function () {
+                check_email();
+            });
+            $("#password").focusout(function () {
+                check_password();
+            });
+
+            function check_email() {
+                var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                var email = $("#email").val();
+                if (pattern.test(email) && email === "test@test.com") {
+                    $("#email_error_message").hide();
+                    $("#email").css("border-bottom", "2px solid #34f458");
+                } else {
+                    $("#email_error_message").html("Invalid Email");
+                    $("#email_error_message").show();
+                    $("#email").css("border-bottom", "2px solid #F90A0A");
+                    error_email = true;
+                }
+            }
+            function check_password() {
+                var password_entered = $("#password").val();
+                if (password_entered != "admin") {
+                    $("#password_error_message").html("Wrong Password");
+                    $("#password_error_message").show();
+                    $("#passord").css("border-bottom", "2px solid #F90A0A");
+                } else {
+                    $("#password_error_message").hide();
+                    $("#passord").css("border-bottom", "2px solid #34f458");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

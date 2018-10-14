@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Credit Card Number</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/task2.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body id="bg-img">
+    <h3 class="center-align">Enter Your Credit Card Number</h3>
+    <div class="container">
+        <div class="row">
+            <div class="input-field col m10 s12">
+                <i class="material-icons prefix">credit_card</i>
+                <input id="search" type="number" min="0" class="validate">
+                <label for="search">Enter Credit Card Number</label>
+                <span id="card_error_message"></span>
+            </div>
+            <div class="input-field col md2 s12">
+                <button class="btn waves-effect waves-light teal accent-4" name="action" id="submitBtn">Search
+                    <i class="material-icons right">search</i>
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Card Number</th>
+                        <th>Card Holder Name</th>
+                        <th>Card Validity</th>
+                        <th>Card Company</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <a href="dropdown.html" class="waves-effect waves-light btn right-align"><i class="material-icons right">chevron_right</i>Next
+            Task</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        $("#submitBtn").click(function () {
+            $.getJSON("data.json", function (data) {
+                var search = $("#search").val();
+                var regex = new RegExp(search, "i");
+                var output;
+                $("#card_error_message").hide();
+                $.each(data, function (key, value) {
+                    if ($('#search').val() == "") {
+                        $("#card_error_message").html("The Input is Empty");
+                        $("#card_error_message").show();
+                    }
+                    else if (value.card_number.search(regex) != -1) {
+                        output += "<tr>";
+                        output += "<td id='" + key + "'>" + value.card_number + "</td>";
+                        output += "<td id='" + key + "'>" + value.card_holder_name + "</td>";
+                        output += "<td id='" + key + "'>" + value.card_validity + "</td>";
+                        output += "<td id='" + key + "'>" + value.card_company + "</td>";
+                        output += "</tr>";
+                    }
+                });
+                $("tbody").html(output);
+            });
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

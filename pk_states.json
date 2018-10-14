@@ -1,0 +1,22 @@
+[
+  {
+    "stateCode": "SN",
+    "name": "Sindh"
+  },
+  {
+    "stateCode": "PUN",
+    "name": "Punjab"
+  },
+  {
+    "stateCode": "BAL",
+    "name": "Balochistan"
+  },
+  {
+    "stateCode": "KPK",
+    "name": "KhyberPakhtoonkhua"
+  },
+  {
+    "stateCode": "GB",
+    "name": "Gilgit/Baltistan"
+  }
+]

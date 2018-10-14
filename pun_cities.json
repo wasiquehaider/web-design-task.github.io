@@ -1,0 +1,14 @@
+[
+  {
+    "cityCode": "LHR",
+    "name": "Lahore"
+  },
+  {
+    "cityCode": "FS",
+    "name": "Faisalabad"
+  },
+  {
+    "cityCode": "MUL",
+    "name": "Multan"
+  }
+]

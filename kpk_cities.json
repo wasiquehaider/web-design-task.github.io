@@ -1,0 +1,18 @@
+[
+  {
+    "cityCode": "PSH",
+    "name": "Peshawar"
+  },
+  {
+    "cityCode": "ABT",
+    "name": "Abbotabad"
+  },
+  {
+    "cityCode": "MN",
+    "name": "Mansehra"
+  },
+  {
+    "cityCode": "HZ",
+    "name": "Hazara"
+  }
+]

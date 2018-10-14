@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DropDown (COUNTRY, STATE, CITY)</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/task3.css">
+
+
+</head>
+
+<body id="bg-img">
+    <h1 class="text-center">Dependent DropDowns</h1>
+    <div class="container">
+        <div class="extra-padding">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="form-group">
+                        <label for="country">Select Country</label>
+                        <select class="form-control" id="country">
+                            <option disabled>Select Country</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="form-group">
+                        <label for="state">Select State</label>
+                        <select class="form-control" id="state">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="form-group">
+                        <label for="city">Select City(You Can Select Multiple Cities)</label>
+                        <select multiple class="form-control" id="city">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+  var countryDropDown;
+  var stateDropDown;
+  var cityDropDown;
+
+  $.getJSON("countries.json", function(result) {
+    $.each(result, function(i, country) {
+      countryDropDown +=
+        "<option value='" + country.code + "'>" + country.name + "</option>";
+    });
+    $("#country").html(countryDropDown);
+  });
+
+  $("#country").change(function() {
+    stateDropDown = "";
+    $("#state").empty();
+    if ($(this).val() === "PK") {
+      $.getJSON("pk_states.json", function(data) {
+        $.each(data, function(i, state) {
+          stateDropDown +=
+            '<option value="' +
+            state.stateCode +
+            '">' +
+            state.name +
+            "</option>";
+        });
+        $("#state").html(stateDropDown);
+      });
+    } else {
+      $("#state").empty();
+    }
+  });
+
+  $("#state").change(function() {
+    cityDropDown = "";
+    $("#city").empty();
+    if ($(this).val() === "SN") {
+      $.getJSON("sd_cities.json", function(data) {
+        $.each(data, function(index, city) {
+          cityDropDown +=
+            '<option value="' + city.cityCode + '">' + city.name + "</option>";
+        });
+        $("#city").html(cityDropDown);
+      });
+    } else if ($(this).val() === "PUN") {
+      $.getJSON("pun_cities.json", function(data) {
+        $.each(data, function(index, city) {
+          cityDropDown +=
+            '<option value="' + city.cityCode + '">' + city.name + "</option>";
+        });
+        $("#city").html(cityDropDown);
+      });
+    } else if ($(this).val() === "KPK") {
+      $.getJSON("kpk_cities.json", function(data) {
+        $.each(data, function(index, city) {
+          cityDropDown +=
+            '<option value="' + city.cityCode + '">' + city.name + "</option>";
+        });
+        $("#city").html(cityDropDown);
+      });
+    } else if ($(this).val() === "BAL") {
+      $.getJSON("bal_cities.json", function(data) {
+        $.each(data, function(index, city) {
+          cityDropDown +=
+            '<option value="' + city.cityCode + '">' + city.name + "</option>";
+        });
+        $("#city").html(cityDropDown);
+      });
+    } else if ($(this).val() === "GB") {
+      $.getJSON("gb_cities.json", function(data) {
+        $.each(data, function(index, city) {
+          cityDropDown +=
+            '<option value="' + city.cityCode + '">' + city.name + "</option>";
+        });
+        $("#city").html(cityDropDown);
+      });
+    }
+  });
+});
+
+    
+    </script>
+</body>
+
+</html>
